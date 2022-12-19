@@ -24,7 +24,7 @@ int main() {
     for (int pri : koglomerat) {
         cout << pri << " "; //kontrolnie
     }
-    cout << T << "\n"; //adashertdhd
+    cout << T << "\n"; 
     cout << "\n";
 
     alg();
