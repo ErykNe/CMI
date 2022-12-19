@@ -43,13 +43,13 @@ void alg(){
 void binarySearch(int low, int high){
     // Print the vector
     cout << "Vector: ";
-    for (int i = 0; i < a.size(); i++)
-        cout << a[i] << " ";
+    for (int i = 0; i < koglomerat.size(); i++)
+        cout << koglomerat[i] << " ";
     cout << endl;
   
     // Find the max element
     cout << "\nMax Element = "
-         << *max_element(a.begin(), a.end());
+         << *max_element(koglomerat.begin(), koglomerat.end());
     return 0;
 
 }
