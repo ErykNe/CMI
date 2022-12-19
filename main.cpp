@@ -52,11 +52,11 @@ int binarySearch(int low, int high){
 }
 void getIndex( int K)
 {
-    auto it = find(v.begin(), v.end(), K);
+    auto it = find(IloscBudynkow.begin(), IloscBudynkow.end(), K);
 
-    if (it != v.end()) 
+    if (it != IloscBudynkow.end()) 
     {
-        int index = it - v.begin();
+        int index = it - IloscBudynkow.begin();
         cout << index << endl;
     }
     else {
@@ -66,7 +66,7 @@ void getIndex( int K)
 
 int main()
 {
-    int K = 54;
+    int K = 0;
     getIndex(IloscBudynkow, K);
     return 0;
 }
