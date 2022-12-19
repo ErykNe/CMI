@@ -50,32 +50,24 @@ int binarySearch(int low, int high){
     int maxElement = *max_element(koglomerat.begin(), koglomerat.end());
     return maxElement;
 }
-void BinarySearch( int l, int r, int x)
+void getIndex( int K)
 {
-    if (r >= l) {
-        int mid = l + (r - l) / 2;
- 
-        if (IloscBudynkow[mid] == x)
-            return mid;
- 
-        if (IloscBudynkow[mid] > x)
-            return binarySearch(IloscBudynkow, l, mid - 1, x);
- 
-        return binarySearch(IloscBudynkow, mid + 1, r, x);
+    auto it = find(v.begin(), v.end(), K);
+
+    if (it != v.end()) 
+    {
+        int index = it - v.begin();
+        cout << index << endl;
     }
- 
-    return -1;
+    else {
+        cout << "-1" << endl;
+    }
 }
-int main(void)
+
+int main()
 {
-    int arr[] = { 2, 3, 4, 10, 40 };
-    int x = 10;
-    int n = sizeof(IloscBudynkow) / sizeof(IloscBudynkow[0]);
-    int result = binarySearch(arr, 0, n - 1, x);
-    (result == -1)
-        ? cout << "Element is not present in array"
-        : cout << "Element is present at index " << result;
+    int K = 54;
+    getIndex(IloscBudynkow, K);
     return 0;
 }
-    cout << "NIE" << "\n";
 }
