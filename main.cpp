@@ -10,7 +10,8 @@ int T = 0; //ile zestawow budynkow jest
 int licznik; //ilość wyburzeń
 
 void alg();
-int binarySearch(int low, int high);
+int znajdzNajwiekszaLiczbe(int low, int high);
+int znajdzZera(int low, int high);
 int main() {
     cin >> T;
     for (int i = 0; i < T; ++i) {
@@ -23,51 +24,36 @@ int main() {
             koglomerat.push_back(pietro);
         }
     }
-    for (int pri : koglomerat) {
-        cout << pri << " "; //kontrolnie
-    }
-    cout << T << "\n";
-    cout << "\n";
-
     alg();
-
-
     return 0;
 }
 int sd = 0;
 void alg(){
     for (int i = 0; i < IloscBudynkow.size(); ++i) {
-        int ilosc = binarySearch(0, IloscBudynkow[i]); //znajdz najwieksza liczbe
-        cout << '\n';
+        //algorytm
+        //jezeli znalazlo 0 w środku tego - Cout << "NIE" << "\n";
+        //continue;
+        int a = znajdzZera(0, IloscBudynkow[i]);
+        if (a == 1){
+            cout << "NIE" << "\n";
+            continue;
+        }
+        int ilosc = znajdzNajwiekszaLiczbe(0, IloscBudynkow[i]); //znajdz najwieksza liczbe
         cout << ilosc << "\n";
-
         for (int j = 0; j < IloscBudynkow[i]; ++j) {
             koglomerat.erase(koglomerat.begin());
         }
     }
 }
-int binarySearch(int low, int high){
+int znajdzNajwiekszaLiczbe(int low, int high){
     int maxElement = *max_element(koglomerat.begin(), koglomerat.end());
     return maxElement;
 }
-void getIndex( int K)
-{
-    auto it = find(IloscBudynkow.begin(), IloscBudynkow.end(), K);
-
-    if (it != IloscBudynkow.end()) 
-    {
-        int index = it - IloscBudynkow.begin();
-        cout << index << endl;
-    }
-    else {
-        cout << "-1" << endl;
-    }
-}
-
-int main()
-{
-    int K = 0;
-    getIndex(IloscBudynkow, K);
-    return 0;
-}
+int znajdzZera(){
+    try{
+        auto it = find(IloscBudynkow.begin(), IloscBudynkow.end(), 0);
+        znajdzZera(0, it); //recall - naprawic
+    } catch (exception e){
+        return 1;
+    }
 }
