@@ -50,3 +50,6 @@ int binarySearch(int low, int high){
     int maxElement = *max_element(koglomerat.begin(), koglomerat.end());
     return maxElement;
 }
+void kot(){
+    
+}
