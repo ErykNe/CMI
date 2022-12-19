@@ -10,6 +10,7 @@ int T = 0; //ile zestawow budynkow jest
 int licznik; //ilość wyburzeń
 
 void alg();
+void binarySearch(int low, int high);
 int main() {
     cin >> T;
     for (int i = 0; i < T; ++i) {
@@ -35,34 +36,10 @@ int main() {
 }
 int sd = 0;
 void alg(){
-    for (int i = 0; i < T; ++i) {
-        while (true){
-            for (int j = 0; j < IloscBudynkow[i] - 1; ++j) {
-                if (koglomerat[j] == 0){
-                    sd++; // tu do przekminy
-                } else {
-                    koglomerat[j]--;
-                }
-            }
-            licznik++;
-            if (sd == IloscBudynkow[i]){
-                cout << licznik << "\n";
-                break;
-            }
-            sd = 0;
-        }
+    for (int i = 0; i < IloscBudynkow.size() - 1; ++i) {
+        binarySearch(0, IloscBudynkow[i]); //znajdz najwieksza liczbe
     }
-    // Get the vector
-    vector<int> a = { 1, 45, 54, 71, 76, 12 };
-  
-    // Print the vector
-    cout << "Vector: ";
-    for (int i = 0; i < a.size(); i++)
-        cout << a[i] << " ";
-    cout << endl;
-  
-    // Find the max element
-    cout << "\nMax Element = "
-         << *max_element(a.begin(), a.end());
-    return 0;
+}
+void binarySearch(int low, int high){
+
 }
