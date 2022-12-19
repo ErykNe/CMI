@@ -26,7 +26,7 @@ int main() {
     for (int pri : koglomerat) {
         cout << pri << " "; //kontrolnie
     }
-    cout << T << "\n"; 
+    cout << T << "\n";
     cout << "\n";
 
     alg();
@@ -41,15 +41,6 @@ void alg(){
     }
 }
 void binarySearch(int low, int high){
-    // Print the vector
-   
-    for (int i = 0; i < koglomerat.size(); i++)
-        cout << koglomerat[i] << " ";
-  
-  
-    // Find the max element
-    int maxElement = *max_element(koglomerat.begin(), koglomerat.end());
-    cout << maxElement << "\n;
-    return 0;
-
+    int maxElement = *max_element(koglomerat.begin(), koglomerat.end());
+    cout << maxElement << "\n";
 }
