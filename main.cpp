@@ -41,9 +41,6 @@ void alg(){
     }
 }
 void binarySearch(int low, int high){
-    // Get the vector
-    vector<int> a = { 1, 45, 54, 71, 76, 12 };
-  
     // Print the vector
     cout << "Vector: ";
     for (int i = 0; i < a.size(); i++)
