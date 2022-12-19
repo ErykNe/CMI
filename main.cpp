@@ -9,6 +9,7 @@ int T = 0; //ile zestawow budynkow jest
 int licznik; //ilość wyburzeń
 
 void alg();
+void binarySearch(int low, int high);
 int main() {
     cin >> T;
     for (int i = 0; i < T; ++i) {
@@ -34,5 +35,10 @@ int main() {
 }
 int sd = 0;
 void alg(){
-    
+    for (int i = 0; i < IloscBudynkow.size() - 1; ++i) {
+        binarySearch(0, IloscBudynkow[i]); //znajdz najwieksza liczbe 
+    }
+}
+void binarySearch(int low, int high){
+
 }
