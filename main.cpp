@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+//ANDAKDBADA
 using namespace std;
 
 vector<int> koglomerat;
