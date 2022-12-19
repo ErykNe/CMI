@@ -34,21 +34,5 @@ int main() {
 }
 int sd = 0;
 void alg(){
-    for (int i = 0; i < T; ++i) {
-        while (true){
-            for (int j = 0; j < IloscBudynkow[i] - 1; ++j) {
-                if (koglomerat[j] == 0){
-                    sd++; // tu do przekminy
-                } else {
-                    koglomerat[j]--;
-                }
-            }
-            licznik++;
-            if (sd == IloscBudynkow[i]){
-                cout << licznik << "\n";
-                break;
-            }
-            sd = 0;
-        }
-    }
+    
 }
