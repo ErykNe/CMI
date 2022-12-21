@@ -63,10 +63,10 @@ int znajdzNajwiekszaLiczbe(int low, int high){
     return maxElement;
 }
 int sprawdzOptymalnosc(int low, int high) {
-    for(int i = high - 1; i > low; i--){
-        int a = koglomerat[i];
+    for(int j = high - j; j > low; j--){
+        int a = koglomerat[j];
         if(a == 0){
-            if(koglomerat[i + 1] != 0 && koglomerat[i - 1] != 0 && i + 1 < high){
+            if(koglomerat[j + 1] != 0 && koglomerat[j - 1] != 0 && j + 1 < high){
                 return -1;
                 break;
             }
@@ -76,37 +76,17 @@ int sprawdzOptymalnosc(int low, int high) {
     vector<int>::iterator i = max_element(koglomerat.begin(), koglomerat.begin() + high);
     int indexMaxElement = distance(koglomerat.begin(), i);
 
-    int secondLargest = 0;
-    for (int i = 0; i < high; i++) {
-        if (koglomerat[i] != koglomerat[indexMaxElement]) {
-            if (secondLargest == -1) {
-                secondLargest = i;
-            }
-            else if (koglomerat[i] > koglomerat[secondLargest]) {
-                secondLargest = i;
-            }
+    for (int k = indexMaxElement - 1; k > low + 1; --k) {
+        if (koglomerat[k - 1] > koglomerat[k] || koglomerat[k] > koglomerat[k + 1]){
+            return -1;
+            break;
         }
     }
-    int secondSecondLargest = 0;
-    for (int i = high - 1; i >= 0; i--) {
-        if (koglomerat[i] != koglomerat[indexMaxElement]) {
-            if (secondSecondLargest == -1) {
-                secondSecondLargest = i;
-            }
-            else if (koglomerat[i] > koglomerat[secondSecondLargest]) {
-                secondSecondLargest = i;
-            }
+    for (int k = indexMaxElement + 1; k < high - 1; ++k) {
+        if (koglomerat[k - 1] < koglomerat[k] || koglomerat[k]  < koglomerat[k + 1]){
+            return -1;
+            break;
         }
     }
-    if (secondLargest == 0){
-        return 0;
-    }
-    if (abs(indexMaxElement - secondLargest) > 1){
-        return -1;
-    }
-    else if (abs(indexMaxElement - secondSecondLargest) > 1){
-        return -1;
-    } else {
-        return 0;
-    }
+    return 0;
 }
