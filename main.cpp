@@ -32,9 +32,6 @@ int main() {
 int sd = 0;
 void alg(){
     for (int i = 0; i < IloscBudynkow.size(); ++i) {
-        //algorytm
-        //jezeli znalazlo 0 w środku tego - Cout << "NIE" << "\n";
-        //continue;
         int a = binarySearch(0, IloscBudynkow[i], 0);
         if (a == -1){
             cout << "NIE" << "\n";
@@ -55,16 +52,14 @@ int znajdzNajwiekszaLiczbe(int low, int high){
     return maxElement;
 }
 int binarySearch(int low, int high, int szukana) {
-    
     for(int i = high; i >= low; i--){
         int a = koglomerat[i];
         if(a == 0){
-            if(koglomerat[i + 1] != 0 && koglomerat[i - 1] != 0){
+            if(koglomerat[i + 1] != 0 && koglomerat[i - 1] != 0 && koglomerat[i + 1] < high){
                 return -1;
                 break;
             }
         }
     }
-    
     return 0;
 }
