@@ -55,7 +55,7 @@ int binarySearch(int low, int high, int szukana) {
 
     int k = 0;
     
-    for(int i = high; i >= low; i--){
+    for(int i = high - 1; i >= low; i--){
         int a = koglomerat[i];
         if(a == 0){
             if(koglomerat[i + 1] != 0 && koglomerat[i - 1] != 0 && koglomerat[i + 1] < high){
