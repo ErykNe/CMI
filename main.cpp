@@ -39,7 +39,11 @@ void alg(){
             continue;
         }
         int ilosc = znajdzNajwiekszaLiczbe(0, IloscBudynkow[i]);
-        cout << ilosc << "\n";
+        if (ilosc == 0){
+            cout << "NIE" << "\n";
+        } else {
+            cout << ilosc << "\n";
+        }
         for (int j = 0; j < IloscBudynkow[i]; ++j) {
             koglomerat.erase(koglomerat.begin());
         }
@@ -61,7 +65,8 @@ int sprawdzOptymalnosc(int low, int high) {
     }
     int maxElement = *max_element(koglomerat.begin(), koglomerat.begin() + high);
     vector<int>::iterator i = max_element(koglomerat.begin(), koglomerat.begin() + high);
-    int indexMaxElement = std::distance(koglomerat.begin(), i);
+    int indexMaxElement = distance(koglomerat.begin(), i);
+
     int secondLargest = 0;
     for (int i = 0; i < high; i++) {
         if (koglomerat[i] != koglomerat[indexMaxElement]) {
@@ -83,6 +88,9 @@ int sprawdzOptymalnosc(int low, int high) {
                 secondSecondLargest = i;
             }
         }
+    }
+    if (secondLargest == 0){
+        return 0;
     }
     if (abs(indexMaxElement - secondLargest) > 1){
         return -1;
