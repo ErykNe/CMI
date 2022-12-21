@@ -55,8 +55,6 @@ int znajdzNajwiekszaLiczbe(int low, int high){
     return maxElement;
 }
 int binarySearch(int low, int high, int szukana) {
-
-    int k = 0;
     
     for(int i = high; i >= low; i--){
         int a = koglomerat[i];
