@@ -15,13 +15,22 @@ int sprawdzOptymalnosc(int low, int high);
 
 int main() {
     cin >> T;
+    if (T < 1 || T > 50){
+        exit(1);
+    }
     for (int i = 0; i < T; ++i) {
         int N = 0;
         cin >> N;
+        if (N > 100000){
+            exit(1);
+        }
         IloscBudynkow.push_back(N);
         for (int j = 0; j < N; ++j) {
             int pietro;
             cin >> pietro;
+            if (pietro < 0 || pietro > 500000000){
+                exit(1);
+            }
             koglomerat.push_back(pietro);
         }
     }
