@@ -36,14 +36,13 @@ void alg(){
         //jezeli znalazlo 0 w środku tego - Cout << "NIE" << "\n";
         //continue;
         int a = binarySearch(0, IloscBudynkow[i], 0);
-        int centrum = 0 + (IloscBudynkow[i] - 0) / 2;
-        if (a <= centrum){
-
+        if (a == -1){
+            cout << "NIE" << "\n";
+            for (int j = 0; j < IloscBudynkow[i]; ++j) {
+                koglomerat.erase(koglomerat.begin());
+            }
+            continue;
         }
-        if(a > centrum){
-
-        }
-        cout << a << "\n";
         int ilosc = znajdzNajwiekszaLiczbe(0, IloscBudynkow[i]); //znajdz najwieksza liczbe
         cout << ilosc << "\n";
         for (int j = 0; j < IloscBudynkow[i]; ++j) {
@@ -56,22 +55,18 @@ int znajdzNajwiekszaLiczbe(int low, int high){
     return maxElement;
 }
 int binarySearch(int low, int high, int szukana) {
-    if (high >= low) {
-        int centrum = low + (high - low) / 2;
 
-
-        if (koglomerat[centrum] == szukana){
-            return centrum;
-        }
-`       else if (koglomerat[centrum] > szukana){
-            return binarySearch(low, centrum - 1, 0);
-        }
-        else if (koglomerat[centrum] < szukana){
-            return binarySearch(centrum + 1, high, 0);
+    int k = 0;
+    
+    for(int i = high; i >= low; i--){
+        int a = koglomerat[i];
+        if(a == 0){
+            if(koglomerat[i + 1] != 0 && koglomerat[i - 1] != 0){
+                return -1;
+                break;
+            }
         }
     }
-
-    // We reach here when element is not
-    // present in array
-    return -1;
+    
+    return 0;
 }
