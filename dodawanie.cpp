@@ -13,6 +13,10 @@ using namespace std;
 
 vector<pair<string, string>> pary = {}; //para - typ danych ktory przechowuje dwie dane i tylko dwie, utworzylem z nich vector ktory przechowuje pary
 
+int slowaNaLiczbe(string slowo);
+string liczbaNaSlowa(int liczba);
+void algorytm();
+
 int main() {
     int t = 0; //narazie int, dopóki nie mamy konwertera
     cin >> t;
@@ -32,5 +36,29 @@ int main() {
     for (pair para : pary) {
         cout << para.first << " " << para.second << " ; "; //kontrolnie pokazuje vector z danymi
     }
+
+    algorytm();
+
     return 0;
+}
+
+int slowaNaLiczbe(string slowo){
+    int liczba;
+
+
+    return liczba;
+}
+string liczbaNaSlowa(int liczba){
+    string slowo;
+
+
+    return slowo;
+}
+void algorytm(){
+    for (pair para : pary) {
+        int liczba = slowaNaLiczbe(para.first);
+        int liczba2 = slowaNaLiczbe(para.second);
+        string sumaNapis = liczbaNaSlowa(liczba + liczba2);
+        cout << sumaNapis << "\n";
+    }
 }
