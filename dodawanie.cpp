@@ -4,11 +4,11 @@
 #include <vector>
 #include <sstream>
 
-const char* jednosci[10] = {"", "jeden", "dwa", "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec"};
-const char* nascie[10] = {"dziesiec", " jedenascie", " dwanascie", " trzynascie", " czternascie", " pietnascie", " szesnascie", " siedemnascie", " osiemnascie", " dziewietnascie"};
-const char* dziesiatki[10] ={"", " dziesiec", " dwadziescia", " trzydziesci", " czterdziesci", " piecdziesiat", " szescdziesiat", " siedemdziesiat", " osiemdziesiat", " dziewiecdziesiat"};
-const char* setki[10] = {"", " sto", " dwiescie", " trzysta", " czterysta", " piecset", " szescset", " siedemset", " osiemset", " dziewiecset"};
-const char* x[7] = {"", " tysiecy", " milionow", " tysiace", " miliony", " tysiac", " milion"};
+const char* jednosci[10] = {"zero", "jeden", "dwa", "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec"};
+const char* nascie[10] = {"dziesiec", "jedenascie", "dwanascie", "trzynascie", "czternascie", "pietnascie", "szesnascie", "siedemnascie", "osiemnascie", "dziewietnascie"};
+const char* dziesiatki[10] ={"", "dziesiec", "dwadziescia", "trzydziesci", "czterdziesci", "piecdziesiat", "szescdziesiat", "siedemdziesiat", "osiemdziesiat", "dziewiecdziesiat"};
+const char* setki[10] = {"", "sto", "dwiescie", "trzysta", "czterysta", "piecset", "szescset", "siedemset", "osiemset", "dziewiecset"};
+const char* x[7] = {"", "tysiecy", "milionow", "tysiace", "miliony", "tysiac", "milion"};
 
 using namespace std;
 
@@ -46,61 +46,77 @@ int main() {
 }
 int slowaNaLiczbe(string slowo) {
     int liczba = 0;
-    int a = 1;
-    string s = slowo.substr(0, 10);
-    while (true) {
-        if (slowo.find(jednosci[a]) != string::npos) {
-            liczba += a;
-            RemoveWordFromLine(slowo, jednosci[a]);
-            break;
-        }
-        if (a == 10) {
-            break;
-        }
-        a++;
+    if (slowo == "zero"){
+        return 0;
     }
-    int b = 10;
-    while (true) {
-        if (slowo.find(nascie[b / 10]) != string::npos) {
-            liczba += b;
-            break;
-        }
-        if (b == 110) {
-            break;
-        }
-        b += 10;
-    }
-    int c = 100;
-    while (true) {
-        if (slowo.find(nascie[b / 100]) != string::npos) {
-            liczba += c;
-            break;
-        }
-        if (c == 1100) {
-            break;
-        }
-        c += 100;
-    }
-        int d = 1000;
+    int przechowalnia = 0;
 
-        if (slowo.find(nascie[1]) != string::npos && slowo.find(nascie[3]) != string::npos &&
-            slowo.find(nascie[5]) != string::npos) {
-            int a = 1;
-            while (true) {
-                if (s.find(jednosci[a]) != string::npos) {
-                    d *= a;
-                    liczba += d;
-                    break;
-                }
-                if (a == 11) {
-                    liczba += d;
-                }
-                a++;
+    while (!slowo.empty()) {
+        string s;
+
+        s = slowo.substr(0, slowo.find(' ')); // TUTAJ NAPRAW TU SIE COS PIERDOLI
+
+
+
+
+        int a = 1;
+        while (true) {
+            if (s.find(x[2]) != string::npos || s.find(x[4]) != string::npos || s.find(x[6]) != string::npos) {
+                przechowalnia += a * liczba * 1000000 - liczba;
+                //cout << liczba << " ";
+                RemoveWordFromLine(slowo, x[2]);
+                RemoveWordFromLine(slowo, x[4]);
+                RemoveWordFromLine(slowo, x[6]);
+                RemoveWordFromLine(slowo, " ");
+                break;
             }
+            if (s.find(x[1]) != string::npos || s.find(x[3]) != string::npos) {
+                if (przechowalnia != 0){
+                    int temp = liczba - przechowalnia/1000000 - 1;
+                    liczba += a * temp * 1000 - temp;
+                } else {
+                    liczba += a * liczba * 1000 - liczba;
+                }
+                RemoveWordFromLine(slowo, x[1]);
+                RemoveWordFromLine(slowo, x[3]);
+                RemoveWordFromLine(slowo, x[5]);
+                RemoveWordFromLine(slowo, " ");
+                break;
+            }
+            if (s.find(setki[a]) != string::npos) {
+                liczba += a * 100;
+                //cout << liczba << " ";
+                RemoveWordFromLine(slowo, setki[a]);
+                RemoveWordFromLine(slowo, " ");
+                break;
+            }
+            if (s.find(dziesiatki[a]) != string::npos) {
+                liczba += a * 10;
+                //cout << liczba << " ";
+                RemoveWordFromLine(slowo, dziesiatki[a]);
+                RemoveWordFromLine(slowo, " ");
+                break;
+            }
+            if (s.find(nascie[a]) != string::npos) {
+                liczba += a + 10;
+                //cout << liczba << " ";
+                RemoveWordFromLine(slowo, nascie[a]);
+                RemoveWordFromLine(slowo, " ");
+                break;
+            }
+            if (s.find(jednosci[a]) != string::npos && (strlen(jednosci[a]) == s.length() || strlen(jednosci[a]) == s.length() - 1)) {
+                liczba += a;
+                RemoveWordFromLine(slowo, jednosci[a]);
+                RemoveWordFromLine(slowo, " ");
+                break;
+            }
+            if (a == 10) {
+                break;
+            }
+            a++;
         }
-
-        return liczba;
-
+    }
+    return liczba + przechowalnia;
 }
 string liczbaNaSlowa(int liczba){
 
