@@ -137,13 +137,7 @@ int slowaNaLiczbe(string slowo) {
     return liczba + przechowalnia + err;
 }
 string liczbaNaSlowa(int liczba){
-#include <iostream>
-#include <stdio.h>
 
-using namespace std;
-
-int main()
-{
 string jednosci[10] = {"", " jeden", " dwa", " trzy", " cztery", " piec", " szesc", " siedem", " osiem", " dziewiec"};
 string nascie[10] = {"dziesiec", " jedenascie", " dwanascie", " trzynascie", " czternascie", " pietnascie", " szesnascie", " siedemnascie", " osiemnascie", " dziewietnascie"};
 string dziesiatki[10] ={"", " dziesiec", " dwadziescia", " trzydziesci", " czterdziesci", " piecdziesiat", " szescdziesiat", " siedemdziesiat", " osiemdziesiat", " dziewiecdziesiat"};
@@ -151,7 +145,6 @@ string setki[10] = {"", " sto", " dwiescie", " trzysta", " czterysta", " piecset
 string duze[8] = {"", " tysiac", " tysiace", " tysiecy", " milion", " milionow", " miliony"," miliard."};
 
 string      slownie = " ";
-long long        liczba;
 int     koncowka;
 int     rzad = 0;
 int     j = 0;
@@ -210,7 +203,7 @@ return 0;
 }
 
 
-}
+
 void algorytm(){
     for (pair para : pary) {
         int liczba = slowaNaLiczbe(para.first);
