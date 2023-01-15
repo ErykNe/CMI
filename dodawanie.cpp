@@ -137,7 +137,77 @@ int slowaNaLiczbe(string slowo) {
     return liczba + przechowalnia + err;
 }
 string liczbaNaSlowa(int liczba){
+#include <iostream>
+#include <stdio.h>
 
+using namespace std;
+
+int main()
+{
+string jednosci[10] = {"", " jeden", " dwa", " trzy", " cztery", " piec", " szesc", " siedem", " osiem", " dziewiec"};
+string nascie[10] = {"dziesiec", " jedenascie", " dwanascie", " trzynascie", " czternascie", " pietnascie", " szesnascie", " siedemnascie", " osiemnascie", " dziewietnascie"};
+string dziesiatki[10] ={"", " dziesiec", " dwadziescia", " trzydziesci", " czterdziesci", " piecdziesiat", " szescdziesiat", " siedemdziesiat", " osiemdziesiat", " dziewiecdziesiat"};
+string setki[10] = {"", " sto", " dwiescie", " trzysta", " czterysta", " piecset", " szescset", " siedemset", " osiemset", " dziewiecset"};
+string duze[8] = {"", " tysiac", " tysiace", " tysiecy", " milion", " milionow", " miliony"," miliard."};
+
+string      slownie = " ";
+long long        liczba;
+int     koncowka;
+int     rzad = 0;
+int     j = 0;
+long long elo;
+cout<<1000000 %10;
+
+do{
+
+cin>>liczba;
+ 
+
+if (liczba==0) slownie="zero";
+while (liczba > 1000)
+{
+liczba= liczba / 1000;
+if (liczba > 1 && liczba < 5) slownie = duze[2] + slownie;
+if (liczba >= 5) slownie = duze[3] + slownie;
+if (koncowka%10 != 0) slownie =jednosci[koncowka] + slownie;
+    
+}
+
+
+
+while (liczba>0)
+{
+koncowka=(liczba%10);
+liczba/=10; //liczba = liczba / 10
+if ((j==0)&&(liczba%100!=0 || koncowka!=0)) slownie=duze[rzad]+slownie;
+if ((j==0)&&(liczba%10!=1)) slownie=jednosci[koncowka]+slownie;
+if ((j==0)&&(liczba%10==1))
+
+{
+slownie=nascie[koncowka];
+liczba/=10;
+j+=2;
+continue;
+}
+if (j==1) slownie=dziesiatki[koncowka]+slownie;
+if (j==2)
+{
+slownie=setki[koncowka]+slownie;
+j=-1;
+rzad++;
+}
+j++;
+}
+cout<<slownie;
+
+   rzad = 0;
+   j = 0;
+   slownie = " ";
+
+}while(liczba > 0);
+
+return 0;
+}
 
 
 }
