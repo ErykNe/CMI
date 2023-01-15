@@ -20,8 +20,9 @@ void algorytm();
 void RemoveWordFromLine(std::string &line, const std::string &word);
 
 int main() {
-    int t = 0; //narazie int, dopóki nie mamy konwertera
-    cin >> t;
+    string s;
+    cin >> s;
+    int t = slowaNaLiczbe(s);
     for (int i = 0; i < t; ++i) {
 
 
@@ -36,9 +37,9 @@ int main() {
         pary.push_back(para); //dodaje pare do vectora
     }
 
-    for (pair para : pary) {
+   /* for (pair para : pary) {
         cout << para.first << " " << para.second << " ; "; //kontrolnie pokazuje vector z danymi
-    }
+    }*/
 
     algorytm();
 
@@ -137,73 +138,131 @@ int slowaNaLiczbe(string slowo) {
     return liczba + przechowalnia + err;
 }
 string liczbaNaSlowa(int liczba){
-
-string jednosci[10] = {"", " jeden", " dwa", " trzy", " cztery", " piec", " szesc", " siedem", " osiem", " dziewiec"};
-string nascie[10] = {"dziesiec", " jedenascie", " dwanascie", " trzynascie", " czternascie", " pietnascie", " szesnascie", " siedemnascie", " osiemnascie", " dziewietnascie"};
-string dziesiatki[10] ={"", " dziesiec", " dwadziescia", " trzydziesci", " czterdziesci", " piecdziesiat", " szescdziesiat", " siedemdziesiat", " osiemdziesiat", " dziewiecdziesiat"};
-string setki[10] = {"", " sto", " dwiescie", " trzysta", " czterysta", " piecset", " szescset", " siedemset", " osiemset", " dziewiecset"};
-string duze[8] = {"", " tysiac", " tysiace", " tysiecy", " milion", " milionow", " miliony"," miliard."};
-
-string      slownie = " ";
-int     koncowka;
-int     rzad = 0;
-int     j = 0;
-long long elo;
-cout<<1000000 %10;
-
-do{
-
-cin>>liczba;
- 
-
-if (liczba==0) slownie="zero";
-while (liczba > 1000)
-{
-liczba= liczba / 1000;
-if (liczba > 1 && liczba < 5) slownie = duze[2] + slownie;
-if (liczba >= 5) slownie = duze[3] + slownie;
-if (koncowka%10 != 0) slownie =jednosci[koncowka] + slownie;
-    
+    string slowo;
+    int tabelka = 1;
+    int czarnaRozpaczPomozMi = 1;
+    if (liczba == 0){
+        return "zero";
+    }
+    while (liczba != 0){
+        int koncowka = liczba % 10;
+        int koncowkaSprawdz = liczba % 100 - liczba % 10;
+        liczba /= 10;
+        switch (tabelka) {
+            case 1:
+                if (koncowkaSprawdz < 20 & koncowkaSprawdz != 0){
+                    if (koncowka != 0){
+                        slowo = nascie[koncowka] + slowo;
+                        slowo = " " + slowo;
+                        liczba /= 10;
+                        tabelka++;
+                        break;
+                    }
+                } else {
+                    if (koncowka != 0) {
+                        slowo = jednosci[koncowka] + slowo;
+                        slowo = " " + slowo;
+                    }
+                    break;
+                }
+            case 2:
+                slowo = dziesiatki[koncowka] + slowo;
+                slowo = " " + slowo;
+                break;
+            case 3:
+                slowo = setki[koncowka] + slowo;
+                slowo = " " + slowo;
+                break;
+            case 4:
+                if (koncowka >= 5 || koncowkaSprawdz >= 10){
+                    switch (czarnaRozpaczPomozMi) {
+                        case 1:
+                            slowo = x[1] + slowo;
+                            slowo = " " + slowo;
+                            if (koncowkaSprawdz < 20 && koncowkaSprawdz != 0){
+                                slowo = nascie[koncowka] + slowo;
+                                slowo = " " + slowo;
+                                liczba /= 10;
+                                tabelka++;
+                                break;
+                            } else {
+                                slowo = jednosci[koncowka] + slowo;
+                                slowo = " " + slowo;
+                                break;
+                            }
+                        case 2:
+                            slowo = x[2] + slowo;
+                            slowo = " " + slowo;
+                            if (koncowkaSprawdz < 20){
+                                slowo = nascie[koncowka] + slowo;
+                                slowo = " " + slowo;
+                                liczba /= 10;
+                                tabelka++;
+                                break;
+                            } else {
+                                slowo = jednosci[koncowka] + slowo;
+                                slowo = " " + slowo;
+                                break;
+                            }
+                    }
+                    break;
+                }
+                if (koncowka == 1){
+                    switch (czarnaRozpaczPomozMi) {
+                        case 1:
+                            slowo = x[5] + slowo;
+                            slowo = " " + slowo;
+                            break;
+                        case 2:
+                            slowo = x[6] + slowo;
+                            slowo = " " + slowo;
+                            break;
+                    }
+                    break;
+                }
+                if (koncowka > 1 && koncowka < 5){
+                    switch (czarnaRozpaczPomozMi) {
+                        case 1:
+                            slowo = x[3] + slowo;
+                            slowo = " " + slowo;
+                            if (koncowkaSprawdz < 20 & koncowkaSprawdz != 0){
+                                slowo = nascie[koncowka] + slowo;
+                                slowo = " " + slowo;
+                                liczba /= 10;
+                                tabelka++;
+                                break;
+                            } else {
+                                slowo = jednosci[koncowka] + slowo;
+                                slowo = " " + slowo;
+                                break;
+                            }
+                        case 2:
+                            slowo = x[4] + slowo;
+                            slowo = " " + slowo;
+                            if (koncowkaSprawdz < 20){
+                                slowo = nascie[koncowka] + slowo;
+                                slowo = " " + slowo;
+                                liczba /= 10;
+                                tabelka++;
+                                break;
+                            } else {
+                                slowo = jednosci[koncowka] + slowo;
+                                slowo = " " + slowo;
+                                break;
+                            }
+                    }
+                    break;
+                }
+            case 5:
+                tabelka = 0;
+                czarnaRozpaczPomozMi++;
+                break;
+        }
+        tabelka++;
+    }
+    slowo = slowo.substr(1, slowo.length() - 1);
+    return slowo;
 }
-
-
-
-while (liczba>0)
-{
-koncowka=(liczba%10);
-liczba/=10; //liczba = liczba / 10
-if ((j==0)&&(liczba%100!=0 || koncowka!=0)) slownie=duze[rzad]+slownie;
-if ((j==0)&&(liczba%10!=1)) slownie=jednosci[koncowka]+slownie;
-if ((j==0)&&(liczba%10==1))
-
-{
-slownie=nascie[koncowka];
-liczba/=10;
-j+=2;
-continue;
-}
-if (j==1) slownie=dziesiatki[koncowka]+slownie;
-if (j==2)
-{
-slownie=setki[koncowka]+slownie;
-j=-1;
-rzad++;
-}
-j++;
-}
-cout<<slownie;
-
-   rzad = 0;
-   j = 0;
-   slownie = " ";
-
-}while(liczba > 0);
-
-return 0;
-}
-
-
-
 void algorytm(){
     for (pair para : pary) {
         int liczba = slowaNaLiczbe(para.first);
