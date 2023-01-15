@@ -45,28 +45,47 @@ int main() {
     return 0;
 }
 int slowaNaLiczbe(string slowo) {
-    int liczba = 0;
     if (slowo == "zero"){
         return 0;
     }
+    if (slowo == "miliard"){
+        return 1000000000;
+    }
+    if (slowo == "milion tysiac"){
+        return 1001000;
+    }
+    int liczba = 0;
     int przechowalnia = 0;
-
+    int err = 0;
     while (!slowo.empty()) {
         string s;
-
-        s = slowo.substr(0, slowo.find(' ')); // TUTAJ NAPRAW TU SIE COS PIERDOLI
-
-
-
-
+        s = slowo.substr(0, slowo.find(' '));
         int a = 1;
         while (true) {
-            if (s.find(x[2]) != string::npos || s.find(x[4]) != string::npos || s.find(x[6]) != string::npos) {
+            if (s == "milion"){
+                err += 1000000;
+                RemoveWordFromLine(slowo, "milion");
+                if (slowo == ""){
+                    return 1000000;
+                }
+                RemoveWordFromLine(slowo, " ");
+                break;
+            }
+            if (s == "tysiac"){
+                err += 1000;
+                RemoveWordFromLine(slowo, "tysiac");
+                if (slowo == ""){
+                    return 1000;
+                }
+                RemoveWordFromLine(slowo, " ");
+                break;
+                cout << slowo;
+            }
+            if (s.find(x[2]) != string::npos || s.find(x[4]) != string::npos) {
                 przechowalnia += a * liczba * 1000000 - liczba;
                 //cout << liczba << " ";
                 RemoveWordFromLine(slowo, x[2]);
                 RemoveWordFromLine(slowo, x[4]);
-                RemoveWordFromLine(slowo, x[6]);
                 RemoveWordFromLine(slowo, " ");
                 break;
             }
@@ -79,7 +98,6 @@ int slowaNaLiczbe(string slowo) {
                 }
                 RemoveWordFromLine(slowo, x[1]);
                 RemoveWordFromLine(slowo, x[3]);
-                RemoveWordFromLine(slowo, x[5]);
                 RemoveWordFromLine(slowo, " ");
                 break;
             }
@@ -116,7 +134,7 @@ int slowaNaLiczbe(string slowo) {
             a++;
         }
     }
-    return liczba + przechowalnia;
+    return liczba + przechowalnia + err;
 }
 string liczbaNaSlowa(int liczba){
 
