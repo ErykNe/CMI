@@ -1,0 +1,3 @@
+C:/Users/Eryk Nejfert/Desktop/Programming/misc/others/!Raw Codes/untitled19/cmake-build-debug/CMakeFiles/untitled19.dir
+C:/Users/Eryk Nejfert/Desktop/Programming/misc/others/!Raw Codes/untitled19/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Eryk Nejfert/Desktop/Programming/misc/others/!Raw Codes/untitled19/cmake-build-debug/CMakeFiles/rebuild_cache.dir
