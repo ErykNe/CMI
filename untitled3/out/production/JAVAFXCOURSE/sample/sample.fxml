@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1039.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Button fx:id="button1" alignment="TOP_CENTER" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press00" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button2" alignment="TOP_CENTER" layoutY="260.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press01" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button4" alignment="TOP_CENTER" layoutX="260.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press03" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button5" alignment="TOP_CENTER" layoutX="260.0" layoutY="260.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press04" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button7" alignment="TOP_CENTER" layoutX="520.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press06" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button10" alignment="TOP_CENTER" layoutX="780.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press09" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button8" alignment="TOP_CENTER" layoutX="520.0" layoutY="260.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press07" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button11" alignment="TOP_CENTER" layoutX="780.0" layoutY="260.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press10" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button3" alignment="TOP_CENTER" layoutY="520.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press02" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button6" alignment="TOP_CENTER" layoutX="260.0" layoutY="520.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press05" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button9" alignment="TOP_CENTER" layoutX="520.0" layoutY="520.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press08" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Button fx:id="button12" alignment="TOP_CENTER" layoutX="780.0" layoutY="520.0" maxHeight="260.0" maxWidth="260.0" mnemonicParsing="false" onAction="#press11" prefHeight="260.0" prefWidth="260.0" style="-fx-background-color: White; -fx-border-color: Black;" />
+      <Rectangle id="Xbox" fx:id="Xbox" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="328.0" layoutX="260.0" layoutY="233.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="520.0">
+
+      </Rectangle>
+      <Text id="xText" layoutX="433.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X won!" textAlignment="CENTER" visible="false" wrappingWidth="175.13671875" fx:id="xText">
+         <font>
+            <Font name="System Bold" size="46.0" />
+         </font>
+      </Text>
+      <Text id="oText" fx:id="oText" layoutX="432.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O won!" textAlignment="CENTER" visible="false" wrappingWidth="175.13671875">
+         <font>
+            <Font name="System Bold" size="46.0" />
+         </font>
+      </Text>
+      <Text id="xText" fx:id="drawText" layoutX="443.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Draw!" textAlignment="CENTER" visible="false" wrappingWidth="175.13671875">
+         <font>
+            <Font name="System Bold" size="46.0" />
+         </font>
+      </Text>
+      <Text id="text" fx:id="text" accessibleRole="TEXT_AREA" cache="true" layoutX="329.0" layoutY="52.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Click anywhere to start..." textAlignment="CENTER" wrappingWidth="383.0">
+         <font>
+            <Font size="35.0" />
+         </font>
+         <effect>
+            <DropShadow height="5.0" offsetY="7.0" radius="2.0" spread="0.62" width="5.0">
+               <color>
+                  <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.3091602921485901" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Button fx:id="restartbutton" layoutX="409.0" layoutY="390.0" mnemonicParsing="false" onAction="#restartbutton" prefHeight="49.0" prefWidth="222.0" style="-fx-background-color: white; -fx-border-color: black;" stylesheets="@style.css" text="Start another game!" visible="false">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

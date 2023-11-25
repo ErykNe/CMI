@@ -7,7 +7,7 @@ const char* jednosci[10] = {"", "jeden", "dwa", "trzy", "cztery", "piec", "szesc
 const char* nascie[10] = {"dziesiec", " jedenascie", " dwanascie", " trzynascie", " czternascie", " pietnascie", " szesnascie", " siedemnascie", " osiemnascie", " dziewietnascie"};
 const char* dziesiatki[10] ={"", " dziesiec", " dwadziescia", " trzydziesci", " czterdziesci", " piecdziesiat", " szescdziesiat", " siedemdziesiat", " osiemdziesiat", " dziewiecdziesiat"};
 const char* setki[10] = {"", " sto", " dwiescie", " trzysta", " czterysta", " piecset", " szescset", " siedemset", " osiemset", " dziewiecset"};
-const char* x[7] = {"", " tysiecy", " milionow", " tysiace", " miliony", " tysiac", " milion"};
+const char* x[7] = {"", " tys.", " mln.", " mld.", " bln.", " bld.", " try."};
 
 using namespace std;
 
@@ -22,11 +22,10 @@ int main() {
     cin >> t;
     for (int i = 0; i < t; ++i) {
 
-
         string liczba;
-        getline(std::cin >> std::ws, liczba);
+        cin >> liczba;
         string liczba2;
-        getline(std::cin >> std::ws, liczba2);
+        cin >> liczba2;
         pair<string, string> para;
         para.first = liczba;
         para.second = liczba2;
@@ -42,20 +41,17 @@ int main() {
 
     return 0;
 }
+
 int slowaNaLiczbe(string slowo){
     int liczba;
+
 
 
     return liczba;
 }
 string liczbaNaSlowa(int liczba){
-    stringstream liczba;
-    ss << liczba;
-    string str = ss.str();
-    char slowoChar[] = {};
-    for (int i = 0; i < str.; ++i) {
+    string slowo;
 
-    }
 
     return slowo;
 }
